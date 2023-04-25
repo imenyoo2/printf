@@ -5,6 +5,7 @@
 /**
  * _printf - prints the formated string format
  * @format: formated string
+ * @...: variadic arguments 
  * Return: alwayse 0
  */
 int _printf(const char *format, ...)
