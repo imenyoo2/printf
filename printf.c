@@ -67,6 +67,13 @@ int _printf(const char *format, ...)
 						check = 0;
 						break;
 					}
+					case 'b':
+					{
+						arg1 = va_arg(ap, int);
+						handleArg(opstart, format, &printbin, &arg1, &ReturnValue);
+						check = 0;
+						break;
+					}
 				}
 				format++;
 			}
