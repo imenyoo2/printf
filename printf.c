@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	const char *opstart;
 	va_list ap;
-	int arg1, check;
+	int arg1, check, returnValue = 0;
 #if 0
 	char *arg2;
 #endif
@@ -30,28 +30,28 @@ int _printf(const char *format, ...)
 					case 'c':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printchar, &arg1);
+						handleArg(opstart, format, &printchar, &arg1, &returnValue);
 						check = 0;
 						break;
 					}
 					case '%':
 					{
 						arg1 = '%';
-						handleArg(opstart, format, &printchar, &arg1);
+						handleArg(opstart, format, &printchar, &arg1, &returnValue);
 						check = 0;
 						break;
 					}
 					case 'd':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printint, &arg1);
+						handleArg(opstart, format, &printint, &arg1, &returnValue);
 						check = 0;
 						break;
 					}
 					case 'i':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printint, &arg1);
+						handleArg(opstart, format, &printint, &arg1, &returnValue);
 						check = 0;
 						break;
 					}
@@ -79,11 +79,12 @@ int _printf(const char *format, ...)
 		{
 		  write(1, format, 1);
 		  format++;
+      returnValue++;
 		}
 	}
 	va_end(ap);
-	/* TODO: need to return int based on behaviour */
-	return (0);
+	/* TODO: change functions prototype to be able to modify returnValue */
+	return (returnValue);
 }
 
 /**
@@ -97,8 +98,9 @@ int _printf(const char *format, ...)
 void handleArg(
 				const char *options,
 				const char *format,
-				void (*printer)(void *arg),
-				void *arg)
+				void (*printer)(void *arg, int *returnValue), /* TODO: add returnValue to args */
+				void *arg,
+        int *returnValue)
 {
 	if (options < format)
 	{
@@ -106,6 +108,6 @@ void handleArg(
 	}
 	else
 	{
-		printer(arg);
+		printer(arg, returnValue);
 	}
 }
