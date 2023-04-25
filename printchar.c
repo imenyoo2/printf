@@ -10,5 +10,5 @@
 void printchar(void *c, int *ReturnValue)
 {
 	write(1, c, 1);
-  *ReturnValue += 1;
+	*ReturnValue += 1;
 }

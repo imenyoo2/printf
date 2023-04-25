@@ -95,7 +95,7 @@ int _printf(const char *format, ...)
 void handleArg(
 				const char *options,
 				const char *format,
-				void (*printer)(void *arg, int *ReturnValue), /* TODO: add ReturnValue to args */
+				void (*printer)(void *arg, int *ReturnValue),
 				void *arg,
 				int *ReturnValue)
 {

@@ -13,7 +13,14 @@ void printint(void *n, int *ReturnValue)
 	int *arg3;
 
 	arg3 = (int *) n;
-	if (*arg3 < 10)
+	if (*arg3 < 0)
+	{
+		arg = '-';
+		printchar(&arg, ReturnValue);
+		*arg3 *= -1;
+		printint(arg3, ReturnValue);
+	}
+	else if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
 		printchar(&arg, ReturnValue);
