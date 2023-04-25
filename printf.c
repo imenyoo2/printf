@@ -34,6 +34,13 @@ int _printf(const char *format, ...)
 						check = 0;
 						break;
 					}
+					case '%':
+					{
+						arg1 = '%';
+						handleArg(opstart, format, &printchar, &arg1);
+						check = 0;
+						break;
+					}
 					case 'd':
 					{
 						arg1 = va_arg(ap, int);
