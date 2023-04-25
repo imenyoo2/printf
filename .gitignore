@@ -2,3 +2,5 @@
 betty-style.pl
 betty-doc.pl
 main.c
+check.sh
+print
