@@ -12,7 +12,9 @@ int _printf(const char *format, ...)
 	const char *opstart;
 	va_list ap;
 	int arg1, check;
+#if 0
 	char *arg2;
+#endif
 
 	va_start(ap, format);
 	while (*format != '\0')
