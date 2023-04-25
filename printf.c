@@ -81,6 +81,13 @@ int _printf(const char *format, ...)
 						check = 0;
 						break;
 					}
+					case 'S':
+					{
+						arg2 = va_arg(ap, char *);
+						handleArg(opstart, format, &printStr, &arg2, &ReturnValue);
+						check = 0;
+						break;
+					}
 					case 'b':
 					{
 						arg1 = va_arg(ap, int);
@@ -92,6 +99,13 @@ int _printf(const char *format, ...)
 					{
 						arg1 = va_arg(ap, int);
 						handleArg(opstart, format, &printun, &arg1, &ReturnValue);
+						check = 0;
+						break;
+					}
+					case 'p':
+					{
+						arg1 = va_arg(ap, int);
+						handleArg(opstart, format, &printptr, &arg1, &ReturnValue);
 						check = 0;
 						break;
 					}

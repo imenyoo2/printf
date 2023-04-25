@@ -18,3 +18,26 @@ void printstr(void *c, int *ReturnValue)
 		*str += 1;
 	}
 }
+
+void printStr(void *c, int *ReturnValue)
+{
+	char **str;
+	char buffer;
+
+	str = (char **) c;
+	while (**str != '\0')
+	{
+		if ((**str > 0 && **str < 32) || (**str >= 127))
+		{
+			buffer = '\\';
+			printchar(&buffer, ReturnValue);
+			buffer = 'x';
+			printchar(&buffer, ReturnValue);
+		}
+		else
+		{
+			printchar(*str, ReturnValue);
+		}
+		*str += 1;
+	}
+}

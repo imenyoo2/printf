@@ -12,5 +12,7 @@ void printoct(void *n, int *ReturnValue);
 void printhex(void *n, int *ReturnValue);
 void printHex(void *n, int *ReturnValue);
 void printstr(void *n, int *ReturnValue);
+void printStr(void *n, int *ReturnValue);
+void printptr(void *n, int *ReturnValue);
 void handleArg(const char *options, const char *format, void (*printer)(void *arg, int *returnVaue), void *arg, int *ReturnValue);
 #endif
