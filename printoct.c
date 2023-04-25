@@ -21,7 +21,7 @@ void printoct(void *n, int *ReturnValue)
 	else
 	{
 		arg2 = *arg3 / 8;
-		printint(&arg2, ReturnValue);
+		printoct(&arg2, ReturnValue);
 		arg = '0' + *arg3 % 8;
 		printchar(&arg, ReturnValue);
 	}

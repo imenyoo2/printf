@@ -22,4 +22,6 @@ void handlePlus(void (*printer)(void *arg, int *ReturnValue), void *arg, int *Re
 void handleSpace(void (*printer)(void *arg, int *ReturnValue), void *arg, int *ReturnValue);
 void handleHash(void (*printer)(void *arg, int *ReturnValue), void *arg, int *ReturnValue);
 void handleArg(const char *options, const char *format, void (*printer)(void *arg, int *returnVaue), void *arg, int *ReturnValue);
+
+int checkKnown(const char *format);
 #endif

@@ -55,9 +55,9 @@ void printLhex(void *n, int *ReturnValue)
 	else
 	{
 		arg2 = *arg3 / 16;
-		printhex(&arg2, ReturnValue);
+		printLhex(&arg2, ReturnValue);
 		arg2 = *arg3 % 16;
-		printhex(&arg2, ReturnValue);
+		printLhex(&arg2, ReturnValue);
 	}
 }
 
@@ -109,9 +109,9 @@ void printLHex(void *n, int *ReturnValue)
 	else
 	{
 		arg2 = *arg3 / 16;
-		printHex(&arg2, ReturnValue);
+		printLHex(&arg2, ReturnValue);
 		arg2 = *arg3 % 16;
-		printHex(&arg2, ReturnValue);
+		printLHex(&arg2, ReturnValue);
 	}
 
 }

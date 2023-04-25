@@ -111,6 +111,13 @@ int _printf(const char *format, ...)
 						break;
 					}
 				}
+				if (!checkKnown(format) && check)
+				{
+					arg1 = '%';
+					printchar(&arg1, &ReturnValue);
+					format = opstart;
+					break;
+				}
 				format++;
 			}
 		}
@@ -177,6 +184,28 @@ int containes(const char *start, const char *end, char c)
 			return (1);
 		}
 		buffer++;
+	}
+	return (0);
+}
+
+int checkKnown(const char *format)
+{
+	char known[] = {'+', '#', '-', ' ', '.'};
+	int i;
+
+	for (i = 0; i < 5; i++)
+	{
+		if (*format == known[i])
+		{
+			return (1);
+		}
+	}
+	for (i = 0; i < 10; i++)
+	{
+		if (*format == '0' + i)
+		{
+			return (1);
+		}
 	}
 	return (0);
 }
