@@ -9,11 +9,11 @@
 void printhex(void *n, int *ReturnValue)
 {
 	char arg;
-	unsigned int arg2;
-	unsigned int *arg3;
+	long unsigned int arg2;
+	long unsigned int *arg3;
 	char arr[] = {'f', 'e', 'd', 'c', 'b', 'a'};
 
-	arg3 = (unsigned int *) n;
+	arg3 = (long unsigned int *) n;
 	if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
@@ -36,11 +36,11 @@ void printhex(void *n, int *ReturnValue)
 void printHex(void *n, int *ReturnValue)
 {
 	char arg;
-	unsigned int arg2;
-	unsigned int *arg3;
+	long unsigned int arg2;
+	long unsigned int *arg3;
 	char arr[] = {'F', 'E', 'D', 'C', 'B', 'A'};
 
-	arg3 = (unsigned int *) n;
+	arg3 = (long unsigned int *) n;
 	if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
