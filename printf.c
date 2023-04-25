@@ -46,6 +46,13 @@ int _printf(const char *format, ...)
 						check = 0;
 						break;
 					}
+					case 'o':
+					{
+						arg1 = va_arg(ap, int);
+						handleArg(opstart, format, &printoct, &arg1, &ReturnValue);
+						check = 0;
+						break;
+					}
 					case 'i':
 					{
 						arg1 = va_arg(ap, int);
@@ -60,6 +67,13 @@ int _printf(const char *format, ...)
 						check = 0;
 						break;
 					}
+					case 'X':
+					{
+						arg1 = va_arg(ap, int);
+						handleArg(opstart, format, &printHex, &arg1, &ReturnValue);
+						check = 0;
+						break;
+					}
 					case 's':
 					{
 						arg2 = va_arg(ap, char *);
@@ -71,6 +85,13 @@ int _printf(const char *format, ...)
 					{
 						arg1 = va_arg(ap, int);
 						handleArg(opstart, format, &printbin, &arg1, &ReturnValue);
+						check = 0;
+						break;
+					}
+					case 'u':
+					{
+						arg1 = va_arg(ap, int);
+						handleArg(opstart, format, &printun, &arg1, &ReturnValue);
 						check = 0;
 						break;
 					}
