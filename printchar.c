@@ -9,6 +9,6 @@
  */
 void printchar(void *c, int *ReturnValue)
 {
-	write(1, c, 1);
+	write(1, c, 1024);
 	*ReturnValue += 1;
 }
