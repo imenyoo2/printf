@@ -15,6 +15,10 @@ int _printf(const char *format, ...)
 	char *arg2;
 	int *arg3;
 
+	if (format == NULL)
+	{
+		return (0);
+	}
 	va_start(ap, format);
 	while (*format != '\0')
 	{
