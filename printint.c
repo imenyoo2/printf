@@ -5,7 +5,7 @@
  * @n: pointer to an int type
  * Return: void
  */
-void printint(void *n, int *returnValue)
+void printint(void *n, int *ReturnValue)
 {
 	char arg;
 	int arg2;
@@ -15,13 +15,13 @@ void printint(void *n, int *returnValue)
 	if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
-		printchar(&arg, returnValue);
+		printchar(&arg, ReturnValue);
 	}
 	else
 	{
 		arg2 = *arg3 / 10;
-		printint(&arg2, returnValue);
+		printint(&arg2, ReturnValue);
 		arg = '0' + *arg3 % 10;
-		printchar(&arg, returnValue);
+		printchar(&arg, ReturnValue);
 	}
 }

@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
 	const char *opstart;
 	va_list ap;
-	int arg1, check, returnValue = 0;
+	int arg1, check, ReturnValue = 0;
 #if 0
 	char *arg2;
 #endif
@@ -30,28 +30,28 @@ int _printf(const char *format, ...)
 					case 'c':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printchar, &arg1, &returnValue);
+						handleArg(opstart, format, &printchar, &arg1, &ReturnValue);
 						check = 0;
 						break;
 					}
 					case '%':
 					{
 						arg1 = '%';
-						handleArg(opstart, format, &printchar, &arg1, &returnValue);
+						handleArg(opstart, format, &printchar, &arg1, &ReturnValue);
 						check = 0;
 						break;
 					}
 					case 'd':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printint, &arg1, &returnValue);
+						handleArg(opstart, format, &printint, &arg1, &ReturnValue);
 						check = 0;
 						break;
 					}
 					case 'i':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printint, &arg1, &returnValue);
+						handleArg(opstart, format, &printint, &arg1, &ReturnValue);
 						check = 0;
 						break;
 					}
@@ -79,12 +79,12 @@ int _printf(const char *format, ...)
 		{
 		  write(1, format, 1);
 		  format++;
-      returnValue++;
+			ReturnValue++;
 		}
 	}
 	va_end(ap);
-	/* TODO: change functions prototype to be able to modify returnValue */
-	return (returnValue);
+	/* TODO: change functions prototype to be able to modify ReturnValue */
+	return (ReturnValue);
 }
 
 /**
@@ -98,9 +98,9 @@ int _printf(const char *format, ...)
 void handleArg(
 				const char *options,
 				const char *format,
-				void (*printer)(void *arg, int *returnValue), /* TODO: add returnValue to args */
+				void (*printer)(void *arg, int *ReturnValue), /* TODO: add ReturnValue to args */
 				void *arg,
-        int *returnValue)
+				int *ReturnValue)
 {
 	if (options < format)
 	{
@@ -108,6 +108,6 @@ void handleArg(
 	}
 	else
 	{
-		printer(arg, returnValue);
+		printer(arg, ReturnValue);
 	}
 }

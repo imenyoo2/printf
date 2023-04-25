@@ -6,8 +6,8 @@
  * @n: pointer to an char type
  * Return: void
  */
-void printchar(void *c, int *returnValue)
+void printchar(void *c, int *ReturnValue)
 {
 	write(1, c, 1);
-  *returnValue += 1;
+  *ReturnValue += 1;
 }
