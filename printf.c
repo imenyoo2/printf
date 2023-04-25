@@ -142,12 +142,41 @@ void handleArg(
 				void *arg,
 				int *ReturnValue)
 {
+	char op[] = {'+', ' ', '#'};
+	/* array of handler functions */
+	void (*handlers[])(
+			void (*printer)(void *arg, int *ReturnValue),
+			void *arg,
+			int *ReturnValue) = {&handlePlus, &handleSpace/*, &handleHash*/};
+	int i;
+
 	if (options < format)
 	{
-		/* TODO: handle options */
+		for (i = 0; i < 3; i++)
+		{
+			if (containes(options, format, op[i]))
+			{
+				handlers[i](printer, arg, ReturnValue);
+			}
+		}
 	}
 	else
 	{
 		printer(arg, ReturnValue);
 	}
+}
+
+int containes(const char *start, const char *end, char c)
+{
+	const char *buffer = start;
+
+	while (buffer < end)
+	{
+		if (*buffer == c)
+		{
+			return (1);
+		}
+		buffer++;
+	}
+	return (0);
 }

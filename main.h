@@ -14,5 +14,10 @@ void printHex(void *n, int *ReturnValue);
 void printstr(void *n, int *ReturnValue);
 void printStr(void *n, int *ReturnValue);
 void printptr(void *n, int *ReturnValue);
+int containes(const char *start, const char *end, char c);
+void handlePlusAndSpace(void (*printer)(void *arg, int *ReturnValue), void *arg, int *ReturnValue, char c);
+void handlePlus(void (*printer)(void *arg, int *ReturnValue), void *arg, int *ReturnValue);
+void handleSpace(void (*printer)(void *arg, int *ReturnValue), void *arg, int *ReturnValue);
+void handleHash(void (*printer)(void *arg, int *ReturnValue), void *arg, int *ReturnValue);
 void handleArg(const char *options, const char *format, void (*printer)(void *arg, int *returnVaue), void *arg, int *ReturnValue);
 #endif
