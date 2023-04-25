@@ -10,5 +10,5 @@ void printptr(void *n, int *ReturnValue)
 	printchar(&arg2, ReturnValue);
 	arg2 = 'x';
 	printchar(&arg2, ReturnValue);
-	printhex(arg1, ReturnValue);
+	printLhex(arg1, ReturnValue);
 }
