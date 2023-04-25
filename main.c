@@ -7,9 +7,9 @@
  *
  * Return: Always 0
  */
-#if 0
 int main(void)
 {
+#if 0
     int len;
     int len2;
     unsigned int ui;
@@ -42,17 +42,7 @@ int main(void)
     _printf("Unknown:[%r]\n");
     printf("Unknown:[%r]\n");
     return (0);
-}
 #endif
-#include "main.h"
-
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
-int main(void)
-{
-	_printf("%b\n", 98);
-	return (0);
+		_printf("bla bla %X\n", 23492394);
+		return (0);
 }

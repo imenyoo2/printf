@@ -9,18 +9,11 @@
 void printoct(void *n, int *ReturnValue)
 {
 	char arg;
-	int arg2;
-	int *arg3;
+	unsigned int arg2;
+	unsigned int *arg3;
 
-	arg3 = (int *) n;
-	if (*arg3 < 0)
-	{
-		arg = '-';
-		printchar(&arg, ReturnValue);
-		*arg3 *= -1;
-		printint(arg3, ReturnValue);
-	}
-	else if (*arg3 < 8)
+	arg3 = (unsigned int *) n;
+	if (*arg3 < 8)
 	{
 		arg = '0' + *arg3;
 		printchar(&arg, ReturnValue);
