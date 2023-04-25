@@ -106,7 +106,7 @@ int _printf(const char *format, ...)
 					case 'p':
 					{
 						arg3 = va_arg(ap, int *);
-						handleArg(opstart, format, &printptr, &arg3, &ReturnVa-lue);
+						handleArg(opstart, format, &printptr, &arg3, &ReturnValue);
 						check = 0;
 						break;
 					}
