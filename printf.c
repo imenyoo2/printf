@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int arg1, check, ReturnValue = 0;
 	char *arg2;
+	int *arg3;
 
 	va_start(ap, format);
 	while (*format != '\0')
@@ -104,8 +105,8 @@ int _printf(const char *format, ...)
 					}
 					case 'p':
 					{
-						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printptr, &arg1, &ReturnValue);
+						arg3 = va_arg(ap, int *);
+						handleArg(opstart, format, &printptr, &arg3, &ReturnVa-lue);
 						check = 0;
 						break;
 					}
