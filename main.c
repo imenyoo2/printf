@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	_printf("hello %d this i%c %% an other one %d \n", 29, 's', 23829);
+	_printf("hello %d %x i%c %% an other one %d %s \n", 29, 192383, 's', 23829, "this is a test");
 
 	return (0);
 }

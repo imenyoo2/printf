@@ -12,9 +12,7 @@ int _printf(const char *format, ...)
 	const char *opstart;
 	va_list ap;
 	int arg1, check, ReturnValue = 0;
-#if 0
 	char *arg2;
-#endif
 
 	va_start(ap, format);
 	while (*format != '\0')
@@ -55,22 +53,20 @@ int _printf(const char *format, ...)
 						check = 0;
 						break;
 					}
-#if 0
 					case 'x':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printhex, &arg1);
+						handleArg(opstart, format, &printhex, &arg1, &ReturnValue);
 						check = 0;
 						break;
 					}
 					case 's':
 					{
 						arg2 = va_arg(ap, char *);
-						handleArg(opstart, format, &printstr, &arg2);
+						handleArg(opstart, format, &printstr, &arg2, &ReturnValue);
 						check = 0;
 						break;
 					}
-#endif
 				}
 				format++;
 			}
