@@ -174,6 +174,16 @@ void handleArg(
 	}
 }
 
+/**
+ * handleArg - handles the printing of arg and format options of printf
+ * @options: the pointer to the start of format options
+ * @format: pointer to the end of the format options (format character)
+ * @printer: the adequate print function for arg
+ * @arg: argument to be printed
+ * @ReturnValue: pointer to the return value of printf
+ * Return: void
+ */
+
 int containes(const char *start, const char *end, char c)
 {
 	const char *buffer = start;
@@ -188,6 +198,16 @@ int containes(const char *start, const char *end, char c)
 	}
 	return (0);
 }
+
+/**
+ * checkKnow - handles the printing of arg and format options of printf
+ * @options: the pointer to the start of format options
+ * @format: pointer to the end of the format options (format character)
+ * @printer: the adequate print function for arg
+ * @arg: argument to be printed
+ * @ReturnValue: pointer to the return value of printf
+ * Return: void
+ */
 
 int checkKnown(const char *format)
 {
