@@ -4,3 +4,4 @@ betty-doc.pl
 main.c
 check.sh
 print
+*-main.c
