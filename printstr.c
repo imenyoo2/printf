@@ -1,12 +1,12 @@
 #include "main.h"
 
-
 /**
  * printstr - handle printing of args of type string for printf
  * @c: string type
  * @ReturnValue: pointer to the return value of printf
  * Return: void
  */
+
 void printstr(void *c, int *ReturnValue)
 {
 	char **str;
@@ -18,6 +18,13 @@ void printstr(void *c, int *ReturnValue)
 		*str += 1;
 	}
 }
+
+/**
+ * printStr - handle printing of args of type string in upper case characters for printf
+ * @c: string type
+ * @ReturnValue: pointer to the return value of printf
+ * Return: void
+ */
 
 void printStr(void *c, int *ReturnValue)
 {
