@@ -2,8 +2,9 @@
 
 
 /**
- * printint - handle printing of char args for printf
- * @n: pointer to an char type
+ * printchar - handle printing of char args for printf
+ * @c: pointer to an char type
+ * @ReturnValue: pointer to the return value of printf
  * Return: void
  */
 void printchar(void *c, int *ReturnValue)

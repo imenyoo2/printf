@@ -93,6 +93,7 @@ int _printf(const char *format, ...)
  * @format: pointer to the end of the format options (format character)
  * @printer: the adequate print function for arg
  * @arg: argument to be printed
+ * @ReturnValue: pointer to the return value of printf
  * Return: void
  */
 void handleArg(

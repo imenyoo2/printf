@@ -3,6 +3,7 @@
 /**
  * printint - handle printing of int args for printf
  * @n: pointer to an int type
+ * @ReturnValue: pointer to the return value of printf
  * Return: void
  */
 void printint(void *n, int *ReturnValue)
