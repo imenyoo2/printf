@@ -15,8 +15,13 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int arg1, check, ReturnValue = 0;
 	char *arg2;
-	int *arg3;
+	int *arg3, position = 0;
+	char buffer[1024];
+	appParams params;
 
+	params.ReturnValue = &ReturnValue;
+	params.buffer = &buffer;
+	params.position = &position;
 	va_start(ap, format);
 	while (*format != '\0')
 	{
@@ -31,84 +36,108 @@ int _printf(const char *format, ...)
 					case 'c':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printchar, &arg1, &ReturnValue);
+						params.arg = &arg1;
+						params.printer = &printchar;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case '%':
 					{
 						arg1 = '%';
-						handleArg(opstart, format, &printchar, &arg1, &ReturnValue);
+						params.arg = &arg1;
+						params.printer = &printchar;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 'd':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printint, &arg1, &ReturnValue);
+						params.arg = &arg1;
+						params.printer = &printint;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 'o':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printoct, &arg1, &ReturnValue);
+						params.arg = &arg1;
+						params.printer = &printint;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 'i':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printint, &arg1, &ReturnValue);
+						params.arg = &arg1;
+						params.printer = &printint;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 'x':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printhex, &arg1, &ReturnValue);
+						params.arg = &arg1;
+						params.printer = &printhex;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 'X':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printHex, &arg1, &ReturnValue);
+						params.arg = &arg1;
+						params.printer = &printHex;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 's':
 					{
 						arg2 = va_arg(ap, char *);
-						handleArg(opstart, format, &printstr, &arg2, &ReturnValue);
+						params.arg = &arg2;
+						params.printer = &printstr;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 'S':
 					{
 						arg2 = va_arg(ap, char *);
-						handleArg(opstart, format, &printStr, &arg2, &ReturnValue);
+						params.arg = &arg2;
+						params.printer = &printStr;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 'b':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printbin, &arg1, &ReturnValue);
+						params.arg = &arg1;
+						params.printer = &printbin;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 'u':
 					{
 						arg1 = va_arg(ap, int);
-						handleArg(opstart, format, &printun, &arg1, &ReturnValue);
+						params.arg = &arg1;
+						params.printer = &printun;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
 					case 'p':
 					{
 						arg3 = va_arg(ap, int *);
-						handleArg(opstart, format, &printptr, &arg3, &ReturnValue);
+						params.arg = &arg3;
+						params.printer = &printptr;
+						handleArg(&params, opstart, format);
 						check = 0;
 						break;
 					}
@@ -116,7 +145,7 @@ int _printf(const char *format, ...)
 				if (!checkKnown(format) && check)
 				{
 					arg1 = '%';
-					printchar(&arg1, &ReturnValue);
+					writeBuffer(&params, arg1);
 					format = opstart;
 					break;
 				}
@@ -125,12 +154,12 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-		  write(1, format, 1);
+			writeBuffer(&params, *format);
 		  format++;
-			ReturnValue++;
 		}
 	}
 	va_end(ap);
+	writeBuffer(&params, '\0');
 	return (ReturnValue);
 }
 
@@ -143,19 +172,11 @@ int _printf(const char *format, ...)
  * @ReturnValue: pointer to the return value of printf
  * Return: void
  */
-void handleArg(
-				const char *options,
-				const char *format,
-				void (*printer)(void *arg, int *ReturnValue),
-				void *arg,
-				int *ReturnValue)
+void handleArg(appParams *params, const char *options, const char *format)
 {
 	char op[] = {'+', ' ', '#'};
 	/* array of handler functions */
-	void (*handlers[])(
-			void (*printer)(void *arg, int *ReturnValue),
-			void *arg,
-			int *ReturnValue) = {&handlePlus, &handleSpace/*, &handleHash*/};
+	void (*handlers[])(appParams *param) = {&handlePlus, &handleSpace/*, &handleHash*/};
 	int i;
 
 	if (options < format)
@@ -164,13 +185,13 @@ void handleArg(
 		{
 			if (containes(options, format, op[i]))
 			{
-				handlers[i](printer, arg, ReturnValue);
+				handlers[i](params);
 			}
 		}
 	}
 	else
 	{
-		printer(arg, ReturnValue);
+		params->printer(params);
 	}
 }
 

@@ -7,30 +7,31 @@
  * Return: void
  */
 
-void printhex(void *n, int *ReturnValue)
+void printhex(appParams *params)
 {
 	char arg;
 	unsigned int arg2;
 	unsigned int *arg3;
 	char arr[] = {'f', 'e', 'd', 'c', 'b', 'a'};
 
-	arg3 = (unsigned int *) n;
+	arg3 = (unsigned int *) params->arg;
 	if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else if (*arg3 < 16)
 	{
 		arg = arr[15 - *arg3];
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else
 	{
-		arg2 = *arg3 / 16;
-		printhex(&arg2, ReturnValue);
 		arg2 = *arg3 % 16;
-		printhex(&arg2, ReturnValue);
+		*arg3 = *arg3 / 16;
+		printhex(params);
+		*arg3 = arg2;
+		printhex(params);
 	}
 }
 
@@ -41,30 +42,31 @@ void printhex(void *n, int *ReturnValue)
  * Return: void
  */
 
-void printLhex(void *n, int *ReturnValue)
+void printLhex(appParams *params)
 {
 	char arg;
 	unsigned long arg2;
 	unsigned long *arg3;
 	char arr[] = {'f', 'e', 'd', 'c', 'b', 'a'};
 
-	arg3 = (unsigned long *) n;
+	arg3 = (unsigned long *) params->arg;
 	if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else if (*arg3 < 16)
 	{
 		arg = arr[15 - *arg3];
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else
 	{
-		arg2 = *arg3 / 16;
-		printLhex(&arg2, ReturnValue);
 		arg2 = *arg3 % 16;
-		printLhex(&arg2, ReturnValue);
+		*arg3 = *arg3 / 16;
+		printhex(params);
+		*arg3 = arg2;
+		printhex(params);
 	}
 }
 
@@ -76,30 +78,31 @@ void printLhex(void *n, int *ReturnValue)
  * Return: void
  */
 
-void printHex(void *n, int *ReturnValue)
+void printHex(appParams *params)
 {
 	char arg;
 	unsigned int arg2;
 	unsigned int *arg3;
 	char arr[] = {'F', 'E', 'D', 'C', 'B', 'A'};
 
-	arg3 = (unsigned int *) n;
+	arg3 = (unsigned int *) params->arg;
 	if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else if (*arg3 < 16)
 	{
 		arg = arr[15 - *arg3];
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else
 	{
-		arg2 = *arg3 / 16;
-		printHex(&arg2, ReturnValue);
 		arg2 = *arg3 % 16;
-		printHex(&arg2, ReturnValue);
+		*arg3 = *arg3 / 16;
+		printhex(params);
+		*arg3 = arg2;
+		printhex(params);
 	}
 }
 
@@ -111,30 +114,30 @@ void printHex(void *n, int *ReturnValue)
  * Return: void
  */
 
-void printLHex(void *n, int *ReturnValue)
+void printLHex(appParams *params)
 {
 	char arg;
 	unsigned long arg2;
 	unsigned long *arg3;
 	char arr[] = {'F', 'E', 'D', 'C', 'B', 'A'};
 
-	arg3 = (unsigned long *) n;
+	arg3 = (unsigned long *) params->arg;
 	if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else if (*arg3 < 16)
 	{
 		arg = arr[15 - *arg3];
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else
 	{
-		arg2 = *arg3 / 16;
-		printLHex(&arg2, ReturnValue);
 		arg2 = *arg3 % 16;
-		printLHex(&arg2, ReturnValue);
+		*arg3 = *arg3 / 16;
+		printhex(params);
+		*arg3 = arg2;
+		printhex(params);
 	}
-
 }

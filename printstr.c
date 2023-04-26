@@ -7,14 +7,14 @@
  * Return: void
  */
 
-void printstr(void *c, int *ReturnValue)
+void printstr(appParams *params)
 {
 	char **str;
 
-	str = (char **) c;
+	str = (char **) params->arg;
 	while (**str != '\0')
 	{
-		printchar(*str, ReturnValue);
+		writeBuffer(params, **str);
 		*str += 1;
 	}
 }
@@ -27,24 +27,24 @@ void printstr(void *c, int *ReturnValue)
  * Return: void
  */
 
-void printStr(void *c, int *ReturnValue)
+void printStr(appParams *params)
 {
 	char **str;
-	char buffer;
+	char Buffer;
 
-	str = (char **) c;
+	str = (char **) params->arg;
 	while (**str != '\0')
 	{
 		if ((**str > 0 && **str < 32) || (**str >= 127))
 		{
-			buffer = '\\';
-			printchar(&buffer, ReturnValue);
-			buffer = 'x';
-			printchar(&buffer, ReturnValue);
+			Buffer = '\\';
+			writeBuffer(params, Buffer);
+			Buffer = 'x';
+			writeBuffer(params, Buffer);
 		}
 		else
 		{
-			printchar(*str, ReturnValue);
+			writeBuffer(params, **str);
 		}
 		*str += 1;
 	}

@@ -6,23 +6,22 @@
  * @ReturnValue: pointer to the return value of printf
  * Return: void
  */
-void printoct(void *n, int *ReturnValue)
+void printoct(appParams *params)
 {
 	char arg;
-	unsigned int arg2;
 	unsigned int *arg3;
 
-	arg3 = (unsigned int *) n;
+	arg3 = (unsigned int *) params->arg;
 	if (*arg3 < 8)
 	{
 		arg = '0' + *arg3;
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else
 	{
-		arg2 = *arg3 / 8;
-		printoct(&arg2, ReturnValue);
 		arg = '0' + *arg3 % 8;
-		printchar(&arg, ReturnValue);
+		*arg3 = *arg3 / 8;
+		printoct(params);
+		writeBuffer(params, arg);
 	}
 }

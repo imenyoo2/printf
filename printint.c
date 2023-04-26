@@ -7,30 +7,29 @@
  * Return: void
  */
 
-void printint(void *n, int *ReturnValue)
+void printint(appParams *params)
 {
 	char arg;
-	int arg2;
 	int *arg3;
 
-	arg3 = (int *) n;
+	arg3 = (int *) params->arg;
 	if (*arg3 < 0)
 	{
 		arg = '-';
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 		*arg3 *= -1;
-		printint(arg3, ReturnValue);
+		printint(params);
 	}
 	else if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else
 	{
-		arg2 = *arg3 / 10;
-		printint(&arg2, ReturnValue);
 		arg = '0' + *arg3 % 10;
-		printchar(&arg, ReturnValue);
+		*arg3 = *arg3 / 10;
+		printint(params);
+		writeBuffer(params, arg);
 	}
 }

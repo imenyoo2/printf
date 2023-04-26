@@ -8,23 +8,22 @@
  * Return: void
  */
 
-void printun(void *n, int *ReturnValue)
+void printun(appParams *params)
 {
 	char arg;
-	unsigned int arg2;
 	unsigned int *arg3;
 
-	arg3 = (unsigned int *) n;
+	arg3 = (unsigned int *) params->arg;
 	if (*arg3 < 10)
 	{
 		arg = '0' + *arg3;
-		printchar(&arg, ReturnValue);
+		writeBuffer(params, arg);
 	}
 	else
 	{
-		arg2 = *arg3 / 10;
-		printint(&arg2, ReturnValue);
 		arg = '0' + *arg3 % 10;
-		printchar(&arg, ReturnValue);
+		*arg3 = *arg3 / 10;
+		printint(params);
+		writeBuffer(params, arg);
 	}
 }

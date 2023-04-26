@@ -6,28 +6,28 @@
  * @ReturnValue: pointer to the return value of printf
  * Return: void
  */
-void printbin(void *n, int *ReturnValue)
+void printbin(appParams *params)
 {
 	char arg;
 	unsigned int mask = 1;
 	unsigned int *arg3;
 
-	arg3 = (unsigned int *) n;
+	arg3 = (unsigned int *) params->arg;
 	if (*arg3)
 	{
 		if (*arg3 & mask)
 		{
 			*arg3 = *arg3 >> 1;
-			printbin(arg3, ReturnValue);
+			printbin(params);
 			arg = '1';
-			printchar(&arg, ReturnValue);
+			writeBuffer(params, arg);
 		}
 		else
 		{
 			*arg3 = *arg3 >> 1;
-			printbin(arg3, ReturnValue);
+			printbin(params);
 			arg = '0';
-			printchar(&arg, ReturnValue);
+			writeBuffer(params, arg);
 		}
 	}
 }

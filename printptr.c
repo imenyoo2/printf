@@ -6,15 +6,13 @@
  * @ReturnValue: lenth of output format
  */
 
-void printptr(void *n, int *ReturnValue)
+void printptr(appParams *params)
 {
-	int **arg1;
 	char arg2;
 
-	arg1 = (int **) n;
 	arg2 = '0';
-	printchar(&arg2, ReturnValue);
+	writeBuffer(params, arg2);
 	arg2 = 'x';
-	printchar(&arg2, ReturnValue);
-	printLhex(arg1, ReturnValue);
+	writeBuffer(params, arg2);
+	printLhex(params);
 }

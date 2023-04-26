@@ -7,8 +7,7 @@
  * Return: void
  */
 
-void printchar(void *c, int *ReturnValue)
+void printchar(appParams *params)
 {
-	write(1, c, 1);
-	*ReturnValue += 1;
+	writeBuffer(params, *((char *) params->arg));
 }

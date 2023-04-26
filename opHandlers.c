@@ -8,24 +8,20 @@
  *@c: buffer
  */
 
-void handlePlusAndSpace(
-		void (*printer)(void *arg, int *ReturnValue),
-		void *arg,
-		int *ReturnValue,
-		char c)
+void handlePlusAndSpace(appParams *params, char c)
 {
-	int *buffer;
-	char buffer2 = c;
+	int *Buffer;
+	char Buffer2 = c;
 
-	buffer = (int *) arg;
-	if (*buffer > 0)
+	Buffer = (int *) params->arg;
+	if (*Buffer > 0)
 	{
-		printchar(&buffer2, ReturnValue);
-		printer(arg, ReturnValue);
+		writeBuffer(params, Buffer2);
+		params->printer(params);
 	}
 	else
 	{
-		printer(arg, ReturnValue);
+		params->printer(params);
 	}
 }
 
@@ -37,12 +33,9 @@ void handlePlusAndSpace(
  *@ReturnValue: pointer to the return value for conter
  */
 
-void handlePlus(
-		void (*printer)(void *arg, int *ReturnValue),
-		void *arg,
-		int *ReturnValue)
+void handlePlus(appParams *params)
 {
-	handlePlusAndSpace(printer, arg, ReturnValue, '+');
+	handlePlusAndSpace(params, '+');
 }
 
 /**
@@ -53,10 +46,7 @@ void handlePlus(
  */
 
 
-void handleSpace(
-		void (*printer)(void *arg, int *ReturnValue),
-		void *arg,
-		int *ReturnValue)
+void handleSpace(appParams *params)
 {
-	handlePlusAndSpace(printer, arg, ReturnValue, ' ');
+	handlePlusAndSpace(params, ' ');
 }
