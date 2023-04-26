@@ -5,9 +5,10 @@
 /**
  * _printf - prints the formated string format
  * @format: formated string
- * @...: variadic arguments 
+ * @...: variadic arguments
  * Return: alwayse 0
  */
+
 int _printf(const char *format, ...)
 {
 	const char *opstart;
@@ -130,7 +131,8 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(ap);
-	/* TODO: change functions prototype to be able to modify ReturnValue */
+ /* TODO: change functions prototype
+ to be able to modify ReturnValue */
 	return (ReturnValue);
 }
 
