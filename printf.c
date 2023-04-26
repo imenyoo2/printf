@@ -198,7 +198,7 @@ int containes(const char *start, const char *end, char c)
 }
 
 /**
- * checkKnow - handles the printing of arg and format options of printf
+ * checkKnown - handles the printing of arg and format options of printf
  * @format: the pointer to the format specifier of _printf function
  * Return: 1 if success, 0 if non
  */

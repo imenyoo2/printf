@@ -2,11 +2,12 @@
 #include "main.h"
 
 /**
- * printint - handle printing of int args for printf
+ * printun - handle printing of int args for printf
  * @n: pointer to an int type
  * @ReturnValue: pointer to the return value of printf
  * Return: void
  */
+
 void printun(void *n, int *ReturnValue)
 {
 	char arg;
