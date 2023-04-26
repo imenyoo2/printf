@@ -7,7 +7,7 @@ typedef struct params {
 	void (*printer)(struct params *param);
 	void *arg;
 	int *ReturnValue;
-	char (*buffer)[1024];
+	int *buffer;
 	int *position;
 
 } appParams;

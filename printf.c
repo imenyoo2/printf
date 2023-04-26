@@ -16,11 +16,12 @@ int _printf(const char *format, ...)
 	int arg1, check, ReturnValue = 0;
 	char *arg2;
 	int *arg3, position = 0;
-	char buffer[1024];
+	int buffer[1024];
+	/* char *p = buffer; */
 	appParams params;
 
 	params.ReturnValue = &ReturnValue;
-	params.buffer = &buffer;
+	params.buffer = buffer;
 	params.position = &position;
 	va_start(ap, format);
 	while (*format != '\0')
