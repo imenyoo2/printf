@@ -20,7 +20,7 @@ void printstr(void *c, int *ReturnValue)
 }
 
 /**
- * printStr - handle printing of args of type 
+ * printStr - handle printing of args of type
  * string in upper case characters for printf
  * @c: string type
  * @ReturnValue: pointer to the return value of printf

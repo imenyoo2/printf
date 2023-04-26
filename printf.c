@@ -131,8 +131,6 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(ap);
- /* TODO: change functions prototype
- to be able to modify ReturnValue */
 	return (ReturnValue);
 }
 

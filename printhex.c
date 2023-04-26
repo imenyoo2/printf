@@ -69,7 +69,7 @@ void printLhex(void *n, int *ReturnValue)
 }
 
 /**
- * printHex - handle printing of int args in hex format 
+ * printHex - handle printing of int args in hex format
  * and upper case characters for printf
  * @n: pointer to an int type
  * @ReturnValue: pointer to the return value of printf
@@ -104,7 +104,7 @@ void printHex(void *n, int *ReturnValue)
 }
 
 /**
- * printLHex - handle printing of int args in long hex format 
+ * printLHex - handle printing of int args in long hex format
  * and upper case characters for printf
  * @n: pointer to an int type
  * @ReturnValue: pointer to the return value of printf
