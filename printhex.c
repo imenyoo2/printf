@@ -64,9 +64,9 @@ void printLhex(appParams *params)
 	{
 		arg2 = *arg3 % 16;
 		*arg3 = *arg3 / 16;
-		printhex(params);
+		printLhex(params);
 		*arg3 = arg2;
-		printhex(params);
+		printLhex(params);
 	}
 }
 
@@ -100,9 +100,9 @@ void printHex(appParams *params)
 	{
 		arg2 = *arg3 % 16;
 		*arg3 = *arg3 / 16;
-		printhex(params);
+		printHex(params);
 		*arg3 = arg2;
-		printhex(params);
+		printHex(params);
 	}
 }
 
@@ -136,8 +136,8 @@ void printLHex(appParams *params)
 	{
 		arg2 = *arg3 % 16;
 		*arg3 = *arg3 / 16;
-		printhex(params);
+		printLHex(params);
 		*arg3 = arg2;
-		printhex(params);
+		printLHex(params);
 	}
 }

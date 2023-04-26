@@ -4,7 +4,7 @@ void writeBuffer(appParams *params, char c)
 {
 	int i;
 
-	*(params->buffer + *params->position) = c;
+	params->buffer[*params->position] = c;
 	*(params->ReturnValue) += 1;
 	*(params->position) += 1;
 
