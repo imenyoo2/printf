@@ -65,7 +65,7 @@ int _printf(const char *format, ...)
 					{
 						arg1 = va_arg(ap, int);
 						params.arg = &arg1;
-						params.printer = &printint;
+						params.printer = &printoct;
 						handleArg(&params, opstart, format);
 						check = 0;
 						break;

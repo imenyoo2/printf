@@ -19,6 +19,7 @@ void writeBuffer(appParams *params, char c)
 		{
 			params->buffer[i] = '\0';
 		}
+		*(params->ReturnValue) -= 1;
 		write(1, params->buffer, 1024);
 	}
 }
